@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Поменял язык по умолчанию на русский -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calmet – Калибраторы, тестеры, анализаторы</title>
+    <!-- Подключаем новый крутой шрифт -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <!-- Убедись, что твой файл с лого называется new_logo.png -->
+                <a href="#home"><img src="Var_S_Piramid.jpg" alt="Calmet Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" id="nav-home" class="nav-link">Главная</a></li>
+                    <li><a href="#about" id="nav-about" class="nav-link">О нас</a></li>
+                    <li><a href="#products" id="nav-products" class="nav-link">Продукты</a></li>
+                    <li><a href="#contact" id="nav-contact" class="nav-link">Контакты</a></li>
+                </ul>
+            </nav>
+            <!-- НОВЫЙ МИНИМАЛИСТИЧНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+            <div class="language-switcher">
+                <button class="language-current">
+                    <!-- Флаг здесь будет обновляться скриптом, ничего не трогаем -->
+                    <span id="current-lang-flag">🇺🇸</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="language-dropdown">
+                    <!-- ИЗМЕНЕНО: флаг GB на US -->
+                    <a href="#" data-lang="en"><span>🇺🇸</span> English</a>
+                    <a href="#" data-lang="pl"><span>🇵🇱</span> Polski</a>
+                    <a href="#" data-lang="ru"><span>🇷🇺</span> Русский</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h1 id="title">Calmet – Калибраторы, тестеры, анализаторы</h1>
+        <p id="slogan">Более 30 лет инноваций в измерительных технологиях</p>
+    </section>
+
+    <section id="about">
+        <h2 id="about-title">О нас</h2>
+        <p id="about-text">За более чем 30 лет работы мы завоевали доверие наших клиентов на всех континентах...</p>
+    </section>
+
+    <section id="products">
+        <h2 id="products-title">Наши продукты</h2>
+        <div class="product-grid">
+    <div class="product-card">
+        <img src="https://www.calmet.com.pl/images/produkty/stac-wzor/TB41_1.jpg" alt="TE30">
+        <h3 id="te30-title">TE30</h3>
+        <p id="te30-desc">Портативный трехфазный эталонный счетчик...</p>
+        <!-- ДОБАВЛЕН ID ДЛЯ ПЕРЕВОДА -->
+        <a href="https://www.calmet.com.pl/images/pdf/TE30-Electricity-Meter-Tester-and-Power-Quality-Analyzer-Presentation-EN.pdf" target="_blank" id="te30-link">Презентация</a>
+    </div>
+    <div class="product-card">
+        <img src="https://www.calmet.com.pl/images/fotos/C300B-Three-Phase-Power-Calibrator-And-Tester.jpg" alt="C300B">
+        <h3 id="c300b-title">C300B</h3>
+        <p id="c300b-desc">Трехфазный калибратор мощности и энергии...</p>
+        <!-- ДОБАВЛЕН ID ДЛЯ ПЕРЕВОДА -->
+        <a href="https://www.calmet.com.pl/images/pdf/C300-Power-Calibrator-Presentation-EN.pdf" target="_blank" id="c300b-link">Презентация</a>
+    </div>
+    <!-- По аналогии добавь ID для ссылок в остальных карточках -->
+    <div class="product-card">
+        <img src="https://www.calmet.com.pl/images/produkty/test-licz/TS33-Three-Phase-Test-System-with-Reference-Standard-and-Current-Source_2.jpg" alt="TS33">
+        <h3 id="ts33-title">TS33</h3>
+        <p id="ts33-desc">Трехфазная автоматическая тестовая система...</p>
+        <a href="https://www.calmet.com.pl/images/pdf/TS33-Three-Phase-Test-System-with-Reference-Standard-and-Integrated-Current-and-Voltage-Source-Presentation-EN.pdf" target="_blank" id="ts33-link">Презентация</a>
+    </div>
+    <div class="product-card">
+        <img src="https://www.calmet.com.pl/images/produkty/test-licz/TS23-Three-Phase-Test-System-with-Reference-Standard-and-Current-Source.jpg" alt="TS23">
+        <h3 id="ts23-title">TS23</h3>
+        <p id="ts23-desc">Трехфазная тестовая система...</p>
+        <a href="https://www.calmet.com.pl/images/pdf/TS23-Three-Phase-Test-System-with-Reference-Standard-and-Integrated-Current-Source-Presentation-EN.pdf" target="_blank" id="ts23-link">Презентация</a>
+    </div>
+    <div class="product-card">
+        <img src="https://www.calmet.com.pl/images/produkty/stac-wzor/TB41_1.jpg" alt="TB41">
+        <h3 id="tb41-title">TB41</h3>
+        <p id="tb41-desc">Четырехфазный источник напряжения и тока...</p>
+        <a href="https://www.calmet.com.pl/images/pdf/TB41-Four-Phase-AC-Voltage-and-Current-Source-Presentation-EN.pdf" target="_blank"id="tb41-link">Презентация</a>
+    </div>
+    <div class="product-card">
+        <img src="https://www.calmet.com.pl/images/produkty/test-licz/TS41-Test-System-with-Reference-Standard-and-Current-Source.jpg" alt="TS41">
+        <h3 id="ts41-title">TS41</h3>
+        <p id="ts41-desc">Четырехфазная тестовая система...</p>
+        <a href="https://www.calmet.com.pl/images/pdf/TS41-Test-System-with-Reference-Standard-and-Integrated-Current-and-Voltage-Source-Presentation-EN.pdf" target="_blank" id="ts41-link">Презентация</a>
+    </div>
+</div>
+    </section>
+
+    <section id="contact">
+        <h2 id="contact-title">Контакты</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p id="contact-text">Calmet sp. z o.o.<br>ul. Kukulcza 18<br>65-472 Zielona Góra<br>Польша</p>
+                <div class="contact-details">
+                <!-- ДОБАВЛЕНЫ SPAN С ID ДЛЯ ПЕРЕВОДА -->
+                <p><strong id="contact-tel-label">Тел:</strong> <a href="tel:+48683240456">+48 68 324 04 56</a></p>
+                <p><strong id="contact-email-label">Email:</strong> <a href="mailto:mail@calmet.com.pl">mail@calmet.com.pl</a></p>
+            </div>
+            </div>
+            <form id="contact-form" novalidate>
+                <input type="text" id="form-name" placeholder="Ваше имя" required>
+                <input type="email" id="form-email" placeholder="Ваш Email" required>
+                <textarea id="form-message" placeholder="Ваше сообщение" required></textarea>
+                <button type="submit" id="form-submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p id="footer-text">&copy; 2025 Calmet. Все права защищены.</p>
+    </footer>
+    
+    <!-- КНОПКА НАВЕРХ -->
+    <a href="#home" class="scroll-to-top">↑</a>
+
+    <script src="script.js"></script>
+</body>
+</html>

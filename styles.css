@@ -1,0 +1,293 @@
+/* Современный CSS - ВЕРСИЯ 3.0 "ПОД ЛОГО" */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    /* НОВЫЕ ЦВЕТА ПРЯМО С ЛОГОТИПА */
+    --primary-color: #00529B; /* Фирменный синий */
+    --accent-color: #E41E26;  /* Фирменный красный */
+    --accent-color-rgb: 228, 30, 38; /* RGB версия для теней */
+    
+    --secondary-color: #343a40;
+    --light-color: #f8f9fa;
+    --text-color: #333;
+    --white: #fff;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Чтобы шапка не перекрывала заголовки при переходе */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    line-height: 1.6;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8); /* Светлая полупрозрачная шапка */
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 1px solid transparent; /* Для плавного появления границы */
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #eee;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--secondary-color); /* Текст теперь темный для светлой шапки */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* ИСПРАВЛЕНО: поднял линию */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-color);
+    transition: width 0.4s ease;
+}
+
+nav a:hover::after,
+nav a.active::after { /* Стиль для активного пункта */
+    width: 100%;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary-color);
+}
+
+
+/* --- НОВЫЙ СТИЛЬ ПЕРЕКЛЮЧАТЕЛЯ ЯЗЫКА --- */
+.language-switcher {
+    position: relative;
+}
+
+.language-current {
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.language-current:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.language-current .chevron {
+    font-size: 0.7em;
+    color: var(--secondary-color);
+    transition: transform 0.3s ease;
+}
+
+.language-switcher:hover .chevron {
+    transform: rotate(180deg);
+}
+
+#current-lang-flag {
+    font-size: 1.5rem; /* Сделал флаг побольше */
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1001;
+    min-width: 150px;
+}
+
+.language-dropdown a {
+    display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.25rem;
+    color: var(--text-color); text-decoration: none; transition: background-color 0.3s ease;
+}
+
+.language-dropdown a:hover {
+    background-color: var(--light-color); color: var(--primary-color);
+}
+/* ------------------------------------- */
+
+.hero {
+    color: var(--white);
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite, fadeIn 1.5s ease-out;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    max-width: 1200px; margin: 4rem auto; padding: 3rem; background-color: var(--white);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); border-radius: 20px;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.visible { opacity: 1; transform: translateY(0); }
+
+/* ... стили .product-card и другие остаются почти без изменений, но акцентный цвет обновлен ... */
+.product-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(var(--accent-color-rgb), 0.2); /* Тень с новым акцентным цветом */
+    background-color: var(--white);
+}
+
+.product-card a:hover { background-color: var(--accent-color); transform: scale(1.05); }
+
+#contact-form button:hover { background-color: var(--accent-color); transform: scale(1.05); }
+
+
+/* --- НОВЫЕ СТИЛИ ДЛЯ СЕКЦИИ КОНТАКТОВ --- */
+#contact h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap; /* Для мобилок */
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info p {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.contact-details {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.contact-details p {
+    font-size: 1rem;
+}
+.contact-details a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.contact-details a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+#contact-form {
+    flex: 1.5; /* Форма занимает больше места */
+    min-width: 300px;
+    display: flex; flex-direction: column; gap: 1rem;
+    margin: 0; /* Убираем авто-маржины */
+}
+
+#contact-form input, #contact-form textarea {
+    padding: 1rem; border: 1px solid #ccc; border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem; font-family: inherit; background-color: #fdfdfd;
+}
+
+#contact-form input:focus, #contact-form textarea:focus {
+    border-color: var(--primary-color); outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 82, 155, 0.2);
+}
+
+#contact-form button {
+    padding: 1rem; background-color: var(--primary-color); color: var(--white);
+    border: none; border-radius: 8px; cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem; font-weight: bold;
+}
+/* ----------------------------------------------- */
+
+/* Все остальное (footer, scroll-to-top, media queries) остается прежним, но с новыми цветами */
+footer {
+    background-color: var(--secondary-color); color: var(--light-color);
+    text-align: center; padding: 2rem; margin-top: 4rem;
+}
+
+.scroll-to-top {
+    background-color: var(--primary-color); color: var(--white); /* и т.д. */
+}
+.scroll-to-top:hover {
+    background-color: var(--accent-color);
+}
+
+/* Остальные стили (product-card, hero, etc.) остаются, как в прошлой версии */
+#products .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.product-card { background-color: var(--light-color); padding: 1.5rem; border-radius: 15px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease; overflow: hidden; }
+.product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; transition: transform 0.4s ease; }
+.product-card:hover img { transform: scale(1.1); }
+.product-card a { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background-color: var(--primary-color); color: var(--white); text-decoration: none; border-radius: 50px; transition: background-color 0.3s ease, transform 0.3s ease; }
+.form-notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); color: var(--white); padding: 1rem 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 2000; opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; }
+.form-notification.show { opacity: 1; transform: translateX(-50%) translateY(-20px); }
+.scroll-to-top { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 24px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); z-index: 999; opacity: 0; transform: translateY(100px); pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease; }
+.scroll-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+@media (max-width: 768px) { .header-container { flex-direction: column; gap: 1rem; } nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.5rem; } .hero { padding: 4rem 1rem; } .contact-container { flex-direction: column; } }
