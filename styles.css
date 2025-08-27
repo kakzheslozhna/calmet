@@ -1,293 +1,246 @@
-/* Современный CSS - ВЕРСИЯ 3.0 "ПОД ЛОГО" */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+/* Современный CSS - ВЕРСИЯ 10.1 "BOMBA-FIXED" */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 :root {
-    /* НОВЫЕ ЦВЕТА ПРЯМО С ЛОГОТИПА */
-    --primary-color: #00529B; /* Фирменный синий */
-    --accent-color: #E41E26;  /* Фирменный красный */
-    --accent-color-rgb: 228, 30, 38; /* RGB версия для теней */
-    
-    --secondary-color: #343a40;
+    --primary-color: #0d47a1;
+    --accent-color: #d32f2f;
+    --accent-color-rgb: 211, 47, 47;
+    --secondary-color: #212529;
     --light-color: #f8f9fa;
     --text-color: #333;
     --white: #fff;
+    --border-color: #e0e0e0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    --border-radius: 12px;
+    --menu-transition-speed: 0.5s; /* Добавил переменную для скорости анимации меню */
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Чтобы шапка не перекрывала заголовки при переходе */
-}
-
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
-    background-color: var(--light-color);
-    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; color: var(--text-color);
+    background-color: var(--light-color); line-height: 1.7; -webkit-font-smoothing: antialiased;
 }
+body.menu-open { overflow: hidden; }
+h1, h2, h3 { font-weight: 700; color: var(--secondary-color); }
 
 header {
-    background-color: rgba(255, 255, 255, 0.8); /* Светлая полупрозрачная шапка */
-    backdrop-filter: blur(10px);
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+    padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000;
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 1px solid transparent; /* Для плавного появления границы */
+    border-bottom: 1px solid transparent;
 }
-
 header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid #eee;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow);
+    border-bottom-color: var(--border-color);
 }
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.logo img {
-    height: 50px;
-    transition: transform 0.3s ease;
-}
-
-.logo img:hover {
-    transform: scale(1.1);
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 1.5rem;
-}
-
-nav a {
-    color: var(--secondary-color); /* Текст теперь темный для светлой шапки */
-    font-weight: bold;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px; /* ИСПРАВЛЕНО: поднял линию */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 3px;
-    background-color: var(--accent-color);
-    transition: width 0.4s ease;
-}
-
-nav a:hover::after,
-nav a.active::after { /* Стиль для активного пункта */
-    width: 100%;
-}
-
-nav a:hover,
-nav a.active {
-    color: var(--primary-color);
-}
-
-
-/* --- НОВЫЙ СТИЛЬ ПЕРЕКЛЮЧАТЕЛЯ ЯЗЫКА --- */
-.language-switcher {
-    position: relative;
-}
-
-.language-current {
+body.menu-open header {
     background-color: transparent;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: background-color 0.3s ease;
+    backdrop-filter: none;
+    box-shadow: none;
+    border-bottom-color: transparent;
 }
 
-.language-current:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
+.header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+.logo {flex-shrink: 0; }
+.logo img { height: 50px; }
 
-.language-current .chevron {
-    font-size: 0.7em;
-    color: var(--secondary-color);
-    transition: transform 0.3s ease;
+#main-nav {      }
+#main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.5rem; }
+#main-nav a {
+    color: var(--secondary-color); font-weight: 500; text-decoration: none; padding: 0.5rem 0;
+    transition: color 0.3s ease; position: relative; font-size: 1rem;
 }
-
-.language-switcher:hover .chevron {
-    transform: rotate(180deg);
+#main-nav a::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+    background-color: var(--accent-color); transition: width 0.4s ease;
 }
+#main-nav a:hover::after, #main-nav a.active::after { width: 100%; }
+#main-nav a:hover, #main-nav a.active { color: var(--primary-color); }
 
-#current-lang-flag {
-    font-size: 1.5rem; /* Сделал флаг побольше */
+.header-controls { display: flex; align-items: center; gap: 1.5rem; }
+.language-switcher { position: relative; }
+.language-current {
+    background-color: transparent; border: 1px solid var(--border-color); padding: 0.5rem 1rem;
+    border-radius: var(--border-radius); cursor: pointer; display: flex; align-items: center;
+    gap: 0.5rem; transition: all 0.3s ease; font-weight: 500; font-size: 0.9rem;
 }
-
+.language-current:hover { background-color: var(--light-color); }
 .language-dropdown {
-    display: none;
-    position: absolute;
-    top: 120%;
-    right: 0;
-    background-color: var(--white);
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    z-index: 1001;
-    min-width: 150px;
+    display: none; position: absolute; top: 120%; right: 0; background-color: var(--white);
+    border-radius: var(--border-radius); box-shadow: var(--shadow); overflow: hidden;
+    z-index: 1001; min-width: 150px; border: 1px solid var(--border-color);
 }
-
 .language-dropdown a {
     display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.25rem;
-    color: var(--text-color); text-decoration: none; transition: background-color 0.3s ease;
+    color: var(--text-color); text-decoration: none; transition: background-color 0.3s ease; font-weight: 500;
 }
+.language-dropdown a span { font-weight: 700; color: var(--primary-color); }
+.language-dropdown a:hover { background-color: var(--light-color); }
 
-.language-dropdown a:hover {
-    background-color: var(--light-color); color: var(--primary-color);
+.burger-menu {
+    display: none; background: transparent; border: none; cursor: pointer;
+    padding: 0; z-index: 1011; width: 30px; height: 30px; position: relative;
 }
-/* ------------------------------------- */
-
-.hero {
-    color: var(--white);
-    text-align: center;
-    padding: 6rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    background-size: 200% 200%;
-    animation: gradientAnimation 15s ease infinite, fadeIn 1.5s ease-out;
+.burger-menu span {
+    display: block; width: 25px; height: 3px; background-color: var(--secondary-color);
+    border-radius: 3px; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* --- ИЗМЕНЕНИЕ: Более крутая анимация */
+    position: absolute; left: 2.5px;
 }
+.burger-menu span:nth-child(1) { top: 6px; }
+.burger-menu span:nth-child(2) { top: 13.5px; }
+.burger-menu span:nth-child(3) { top: 21px; }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
-}
+.burger-menu.is-active span { background-color: var(--white); }
+.burger-menu.is-active span:nth-child(1) { top: 13.5px; transform: rotate(45deg); }
+.burger-menu.is-active span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+.burger-menu.is-active span:nth-child(3) { top: 13.5px; transform: rotate(-45deg); }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); }
-}
+/* --- ИЗМЕНЕНИЕ: Убрал .close-menu, он больше не нужен --- */
 
-section {
-    max-width: 1200px; margin: 4rem auto; padding: 3rem; background-color: var(--white);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); border-radius: 20px;
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
+/* --- Все секции ниже без изменений, скроллю до медиа-запросов --- */
+.hero { position: relative; height: 90vh; min-height: 600px; background-size: 200% 200%; background-image: linear-gradient(45deg, #0d47a1, #1a237e, #3f51b5); animation: gradientAnimation 15s ease infinite; color: var(--white); display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding: 2rem; }
+@keyframes gradientAnimation { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+#tsparticles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.hero-content { z-index: 2; animation: fadeInUp 1s ease-out; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-text h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); color: var(--white); margin: 0; line-height: 1.2; font-weight: 700; display: inline-flex; flex-wrap: wrap; justify-content: center; }
+.cursor { animation: blink-caret .75s step-end infinite; }
+@keyframes blink-caret { from, to { color: transparent } 50% { color: var(--white); } }
+.hero-text p { font-size: clamp(1rem, 2.5vw, 1.25rem); margin-top: 1rem; opacity: 0.8; }
+section { max-width: 1200px; margin: 5rem auto; padding: 4rem; background-color: var(--white); box-shadow: var(--shadow); border-radius: var(--border-radius); opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+section:first-of-type { margin-top: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
 section.visible { opacity: 1; transform: translateY(0); }
-
-/* ... стили .product-card и другие остаются почти без изменений, но акцентный цвет обновлен ... */
-.product-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 10px 30px rgba(var(--accent-color-rgb), 0.2); /* Тень с новым акцентным цветом */
-    background-color: var(--white);
-}
-
+section h2 { font-size: clamp(2rem, 4vw, 2.5rem); text-align: center; margin-top: 0; margin-bottom: 3rem; position: relative; padding-bottom: 1rem; }
+section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--accent-color); border-radius: 2px; }
+.about-container { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.about-text-content { flex: 1; min-width: 300px; text-align: left;}
+.about-image-content { flex: 1; min-width: 300px; }
+.about-image-content img { width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+#about-mission-text { font-style: italic; color: var(--primary-color); border-left: 3px solid var(--accent-color); padding-left: 1.5rem; margin-top: 2rem; }
+.advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.advantage-card { text-align: center; padding: 2rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); transition: all 0.3s ease; }
+.advantage-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); border-color: var(--primary-color); }
+.advantage-icon svg { color: var(--primary-color); margin-bottom: 1rem; }
+.advantage-card h3 { margin-bottom: 0.5rem; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.product-card { background-color: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; display: flex; flex-direction: column; }
+.product-card img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s ease; }
+.product-card:hover img { transform: scale(1.05); }
+.product-card h3, .product-card p, .product-card a { padding: 0 1.5rem; text-align: left; }
+.product-card h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.product-card p { flex-grow: 1; margin-bottom: 1.5rem; color: #666; }
+.product-card a { display: inline-block; margin: 0 1.5rem 1.5rem 1.5rem; padding: 0.75rem 1.5rem; background-color: var(--primary-color); color: var(--white); text-decoration: none; border-radius: 50px; transition: background-color 0.3s ease, transform 0.3s ease; text-align: center; }
 .product-card a:hover { background-color: var(--accent-color); transform: scale(1.05); }
-
-#contact-form button:hover { background-color: var(--accent-color); transform: scale(1.05); }
-
-
-/* --- НОВЫЕ СТИЛИ ДЛЯ СЕКЦИИ КОНТАКТОВ --- */
-#contact h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.contact-container {
-    display: flex;
-    flex-wrap: wrap; /* Для мобилок */
-    justify-content: space-between;
-    gap: 3rem;
-    align-items: flex-start;
-}
-
-.contact-info {
-    flex: 1;
-    min-width: 300px;
-}
-
-.contact-info p {
-    margin: 0 0 1rem 0;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-
-.contact-details {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #eee;
-}
-
-.contact-details p {
-    font-size: 1rem;
-}
-.contact-details a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.contact-details a:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
-}
-
-#contact-form {
-    flex: 1.5; /* Форма занимает больше места */
-    min-width: 300px;
-    display: flex; flex-direction: column; gap: 1rem;
-    margin: 0; /* Убираем авто-маржины */
-}
-
-#contact-form input, #contact-form textarea {
-    padding: 1rem; border: 1px solid #ccc; border-radius: 8px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    font-size: 1rem; font-family: inherit; background-color: #fdfdfd;
-}
-
-#contact-form input:focus, #contact-form textarea:focus {
-    border-color: var(--primary-color); outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 82, 155, 0.2);
-}
-
-#contact-form button {
-    padding: 1rem; background-color: var(--primary-color); color: var(--white);
-    border: none; border-radius: 8px; cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    font-size: 1.1rem; font-weight: bold;
-}
-/* ----------------------------------------------- */
-
-/* Все остальное (footer, scroll-to-top, media queries) остается прежним, но с новыми цветами */
-footer {
-    background-color: var(--secondary-color); color: var(--light-color);
-    text-align: center; padding: 2rem; margin-top: 4rem;
-}
-
-.scroll-to-top {
-    background-color: var(--primary-color); color: var(--white); /* и т.д. */
-}
-.scroll-to-top:hover {
-    background-color: var(--accent-color);
-}
-
-/* Остальные стили (product-card, hero, etc.) остаются, как в прошлой версии */
-#products .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-.product-card { background-color: var(--light-color); padding: 1.5rem; border-radius: 15px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease; overflow: hidden; }
-.product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; transition: transform 0.4s ease; }
-.product-card:hover img { transform: scale(1.1); }
-.product-card a { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background-color: var(--primary-color); color: var(--white); text-decoration: none; border-radius: 50px; transition: background-color 0.3s ease, transform 0.3s ease; }
-.form-notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); color: var(--white); padding: 1rem 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 2000; opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; }
-.form-notification.show { opacity: 1; transform: translateX(-50%) translateY(-20px); }
-.scroll-to-top { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 24px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); z-index: 999; opacity: 0; transform: translateY(100px); pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease; }
+.product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(var(--accent-color-rgb), 0.15); }
+.certification-container { text-align: center; }
+.certification-container img { max-height: 80px; margin-bottom: 2rem; }
+.certification-container p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.news-card { background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; text-align: left; }
+.news-card img { width: 100%; height: 180px; object-fit: cover; }
+.news-content { padding: 1.5rem; }
+.news-content h3 { margin-top: 0; }
+.contact-container { display: flex; gap: 3rem; flex-wrap: wrap; text-align: left; }
+.contact-info, #contact-form { flex: 1; min-width: 300px; padding: 2.5rem; border-radius: var(--border-radius); }
+.contact-info { background-color: var(--light-color); }
+.contact-info h3, #contact-form h3 { text-align: center; }
+.contact-details a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+.contact-details a:hover { color: var(--accent-color); text-decoration: underline; }
+#contact-form { display: flex; flex-direction: column; gap: 1rem; }
+#contact-form input, #contact-form textarea { padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); transition: border-color 0.3s ease, box-shadow 0.3s ease; font-size: 1rem; font-family: inherit; background-color: var(--white); }
+#contact-form input:focus, #contact-form textarea:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.2); }
+#contact-form button { padding: 1rem; background-color: var(--primary-color); color: var(--white); border: none; border-radius: var(--border-radius); cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease; font-size: 1.1rem; font-weight: bold; }
+#contact-form button:hover { background-color: var(--accent-color); transform: scale(1.02); }
+#form-email.is-invalid { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.2); }
+#form-email.is-invalid::placeholder { color: var(--accent-color); }
+footer { background-color: var(--secondary-color); color: var(--light-color); text-align: center; padding: 3rem 2rem; margin-top: 5rem; }
+.footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-nav { display: flex; gap: 1.5rem; }
+.footer-nav a { color: var(--light-color); text-decoration: none; transition: color 0.3s ease; }
+.footer-nav a:hover { color: var(--accent-color); }
+.scroll-to-top { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 24px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); z-index: 999; opacity: 0; transform: translateY(100px); pointer-events: none; transition: all 0.4s ease; }
 .scroll-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-@media (max-width: 768px) { .header-container { flex-direction: column; gap: 1rem; } nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.5rem; } .hero { padding: 4rem 1rem; } .contact-container { flex-direction: column; } }
+.scroll-to-top:hover { background-color: var(--accent-color); transform: scale(1.1); }
+.form-notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); color: var(--white); padding: 1rem 2rem; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 2000; opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; }
+.form-notification.show { opacity: 1; transform: translateX(-50%) translateY(-20px); }
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ МОБИЛЬНОГО МЕНЮ (ГЛАВНЫЕ ИЗМЕНЕНИЯ ЗДЕСЬ)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    #main-nav {
+        /* --- ИЗМЕНЕНИЕ: Начальное состояние меню (скрыто за экраном) --- */
+        margin 0;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Начинаем за пределами экрана справа */
+        width: 100%;
+        height: 100%;
+        /* --- ИЗМЕНЯЕМ ЭТО: Вместо цвета ставим крутой градиент --- */
+        background: linear-gradient(135deg, rgba(19, 52, 112, 0.97), rgba(13, 28, 88, 0.98));
+
+        /* --- УСИЛИВАЕМ ЭФФЕКТ: Делаем размытие сильнее --- */
+        backdrop-filter: blur(15px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1010;
+        visibility: hidden;
+        transition: right var(--menu-transition-speed) ease-in-out, visibility var(--menu-transition-speed) ease-in-out;
+    }
+
+    #main-nav.is-active {
+        /* --- ИЗМЕНЕНИЕ: Активное состояние (меню на экране) --- */
+        right: 0; /* Плавно выезжает на экран */
+        visibility: visible;
+    }
+    
+    #main-nav ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    /* --- ДОБАВЛЕНИЕ: Анимация для каждого пункта меню --- */
+    #main-nav li {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    #main-nav.is-active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* --- ДОБАВЛЕНИЕ: Задержка анимации для каждого пункта, чтобы они появлялись по очереди --- */
+    #main-nav.is-active li:nth-child(1) { transition-delay: 0.2s; }
+    #main-nav.is-active li:nth-child(2) { transition-delay: 0.3s; }
+    #main-nav.is-active li:nth-child(3) { transition-delay: 0.4s; }
+    #main-nav.is-active li:nth-child(4) { transition-delay: 0.5s; }
+    #main-nav.is-active li:nth-child(5) { transition-delay: 0.6s; }
+    
+    #main-nav a {
+        color: var(--white);
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    #main-nav a::after { background-color: var(--white); }
+    
+    /* --- ИЗМЕНЕНИЕ: Отдельная кнопка закрытия больше не нужна --- */
+    .close-menu { display: none; }
+
+    .burger-menu { display: block; }
+}
+
+@media (max-width: 768px) {
+    header { padding: 1rem 1.5rem; } /* Добавил немного отступов для мобилок */
+    .hero { min-height: 500px; height: auto; padding: 6rem 1.5rem; }
+    section { padding: 3rem 1.5rem; margin: 3rem auto; }
+    .footer-container { flex-direction: column; gap: 2rem; }
+}
