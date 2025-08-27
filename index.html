@@ -1,130 +1,106 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Поменял язык по умолчанию на русский -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calmet – Калибраторы, тестеры, анализаторы</title>
-    <!-- Подключаем новый крутой шрифт -->
+    <title>Calmet – Calibrators, Testers, Analyzers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="logo">
-                <!-- Убедись, что твой файл с лого называется new_logo.png -->
-                <a href="#home"><img src="Var_S_Piramid.png" alt="Calmet Logo"></a>
+                <a href="#home"><img src="images/Var_S_Piramid.png" alt="Calmet Logo"></a>
             </div>
-            <nav>
+            
+            <nav id="main-nav">
+                <!-- --- ИЗМЕНЕНИЕ: Кнопка закрытия удалена отсюда --- -->
                 <ul>
-                    <li><a href="#home" id="nav-home" class="nav-link">Главная</a></li>
-                    <li><a href="#about" id="nav-about" class="nav-link">О нас</a></li>
-                    <li><a href="#products" id="nav-products" class="nav-link">Продукты</a></li>
-                    <li><a href="#contact" id="nav-contact" class="nav-link">Контакты</a></li>
+                    <li><a href="#home" id="nav-home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" id="nav-about" class="nav-link">About Us</a></li>
+                    <li><a href="#advantages" id="nav-advantages" class="nav-link">Advantages</a></li>
+                    <li><a href="#products" id="nav-products" class="nav-link">Products</a></li>
+                    <li><a href="#contact" id="nav-contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-            <!-- НОВЫЙ МИНИМАЛИСТИЧНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
-            <div class="language-switcher">
-                <button class="language-current">
-                    <!-- Флаг здесь будет обновляться скриптом, ничего не трогаем -->
-                    <span id="current-lang-flag">🇺🇸</span>
-                    <span class="chevron">▼</span>
-                </button>
-                <div class="language-dropdown">
-                    <!-- ИЗМЕНЕНО: флаг GB на US -->
-                    <a href="#" data-lang="en"><span>🇺🇸</span> English</a>
-                    <a href="#" data-lang="pl"><span>🇵🇱</span> Polski</a>
-                    <a href="#" data-lang="ru"><span>🇷🇺</span> Русский</a>
+
+            <div class="header-controls">
+                <div class="language-switcher">
+                    <button class="language-current">
+                        <span id="current-lang-flag">EN</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#" data-lang="en"><span>EN</span> English</a>
+                        <a href="#" data-lang="pl"><span>PL</span> Polski</a>
+                        <a href="#" data-lang="ru"><span>RU</span> Русский</a>
+                    </div>
                 </div>
+                <button class="burger-menu" id="burger-menu" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Остальной HTML код остается без изменений -->
     <section id="home" class="hero">
-        <h1 id="title">Calmet – Калибраторы, тестеры, анализаторы</h1>
-        <p id="slogan">Более 30 лет инноваций в измерительных технологиях</p>
+        <div id="tsparticles"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span id="hero-title-prefix">Calmet – </span>
+                    <span id="typewriter-text"></span><span class="cursor">|</span>
+                </h1>
+                <p id="slogan">Over 30 years of innovation in measurement technology</p>
+            </div>
+        </div>
     </section>
-
+    
     <section id="about">
-        <h2 id="about-title">О нас</h2>
-        <p id="about-text">За более чем 30 лет работы мы завоевали доверие наших клиентов на всех континентах...</p>
+        <div class="about-container">
+            <div class="about-text-content"><h2 id="about-title">About Us</h2><p id="about-text">With over 30 years of experience, Calmet has earned the trust of clients on all continents. Our products are used worldwide in thousands of units.</p><p id="about-mission-text">Our mission is to provide cutting-edge measurement solutions, combining precision, reliability, and world-class customer support.</p></div>
+            <div class="about-image-content"><img src="images/World-map-of-Calmet-devices.jpg" alt="Calmet Team or Office"></div>
+        </div>
     </section>
-
-    <section id="products">
-        <h2 id="products-title">Наши продукты</h2>
-        <div class="product-grid">
-    <div class="product-card">
-        <img src="https://www.calmet.com.pl/images/produkty/stac-wzor/TB41_1.jpg" alt="TE30">
-        <h3 id="te30-title">TE30</h3>
-        <p id="te30-desc">Портативный трехфазный эталонный счетчик...</p>
-        <!-- ДОБАВЛЕН ID ДЛЯ ПЕРЕВОДА -->
-        <a href="https://www.calmet.com.pl/images/pdf/TE30-Electricity-Meter-Tester-and-Power-Quality-Analyzer-Presentation-EN.pdf" target="_blank" id="te30-link">Презентация</a>
-    </div>
-    <div class="product-card">
-        <img src="https://www.calmet.com.pl/images/fotos/C300B-Three-Phase-Power-Calibrator-And-Tester.jpg" alt="C300B">
-        <h3 id="c300b-title">C300B</h3>
-        <p id="c300b-desc">Трехфазный калибратор мощности и энергии...</p>
-        <!-- ДОБАВЛЕН ID ДЛЯ ПЕРЕВОДА -->
-        <a href="https://www.calmet.com.pl/images/pdf/C300-Power-Calibrator-Presentation-EN.pdf" target="_blank" id="c300b-link">Презентация</a>
-    </div>
-    <!-- По аналогии добавь ID для ссылок в остальных карточках -->
-    <div class="product-card">
-        <img src="https://www.calmet.com.pl/images/produkty/test-licz/TS33-Three-Phase-Test-System-with-Reference-Standard-and-Current-Source_2.jpg" alt="TS33">
-        <h3 id="ts33-title">TS33</h3>
-        <p id="ts33-desc">Трехфазная автоматическая тестовая система...</p>
-        <a href="https://www.calmet.com.pl/images/pdf/TS33-Three-Phase-Test-System-with-Reference-Standard-and-Integrated-Current-and-Voltage-Source-Presentation-EN.pdf" target="_blank" id="ts33-link">Презентация</a>
-    </div>
-    <div class="product-card">
-        <img src="https://www.calmet.com.pl/images/produkty/test-licz/TS23-Three-Phase-Test-System-with-Reference-Standard-and-Current-Source.jpg" alt="TS23">
-        <h3 id="ts23-title">TS23</h3>
-        <p id="ts23-desc">Трехфазная тестовая система...</p>
-        <a href="https://www.calmet.com.pl/images/pdf/TS23-Three-Phase-Test-System-with-Reference-Standard-and-Integrated-Current-Source-Presentation-EN.pdf" target="_blank" id="ts23-link">Презентация</a>
-    </div>
-    <div class="product-card">
-        <img src="https://www.calmet.com.pl/images/produkty/stac-wzor/TB41_1.jpg" alt="TB41">
-        <h3 id="tb41-title">TB41</h3>
-        <p id="tb41-desc">Четырехфазный источник напряжения и тока...</p>
-        <a href="https://www.calmet.com.pl/images/pdf/TB41-Four-Phase-AC-Voltage-and-Current-Source-Presentation-EN.pdf" target="_blank"id="tb41-link">Презентация</a>
-    </div>
-    <div class="product-card">
-        <img src="https://www.calmet.com.pl/images/produkty/test-licz/TS41-Test-System-with-Reference-Standard-and-Current-Source.jpg" alt="TS41">
-        <h3 id="ts41-title">TS41</h3>
-        <p id="ts41-desc">Четырехфазная тестовая система...</p>
-        <a href="https://www.calmet.com.pl/images/pdf/TS41-Test-System-with-Reference-Standard-and-Integrated-Current-and-Voltage-Source-Presentation-EN.pdf" target="_blank" id="ts41-link">Презентация</a>
-    </div>
-</div>
-    </section>
-
-    <section id="contact">
-        <h2 id="contact-title">Контакты</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <p id="contact-text">Calmet sp. z o.o.<br>ul. Kukulcza 18<br>65-472 Zielona Góra<br>Польша</p>
-                <div class="contact-details">
-                <!-- ДОБАВЛЕНЫ SPAN С ID ДЛЯ ПЕРЕВОДА -->
-                <p><strong id="contact-tel-label">Тел:</strong> <a href="tel:+48683240456">+48 68 324 04 56</a></p>
-                <p><strong id="contact-email-label">Email:</strong> <a href="mailto:mail@calmet.com.pl">mail@calmet.com.pl</a></p>
-            </div>
-            </div>
-            <form id="contact-form" novalidate>
-                <input type="text" id="form-name" placeholder="Ваше имя" required>
-                <input type="email" id="form-email" placeholder="Ваш Email" required>
-                <textarea id="form-message" placeholder="Ваше сообщение" required></textarea>
-                <button type="submit" id="form-submit">Отправить</button>
-            </form>
+    
+    <section id="advantages">
+        <h2 id="advantages-title">Why Choose Calmet?</h2>
+        <div class="advantages-grid">
+            <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div><h3 id="advantage1-title">30+ Years of Experience</h3><p id="advantage1-desc">Deep expertise in metrology and the development of measurement equipment.</p></div>
+            <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="22.95" y2="12"></line><line x1="12" y1="1.05" x2="12" y2="22.95"></line></svg></div><h3 id="advantage2-title">Global Trust</h3><p id="advantage2-desc">Our products are used in thousands of laboratories and enterprises worldwide.</p></div>
+            <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path><line x1="12" y1="2" x2="12" y2="4"></line></svg></div><h3 id="advantage3-title">Innovative Solutions</h3><p id="advantage3-desc">We continuously invest in R&D to create the best instruments.</p></div>
+            <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></div><h3 id="advantage4-title">Customer Support</h3><p id="advantage4-desc">We provide comprehensive technical support and consultation at all stages.</p></div>
         </div>
     </section>
 
+    <section id="products">
+        <h2 id="products-title">Our Products</h2>
+        <div class="product-grid"><div class="product-card"><img src="https://www.calmet.com.pl/images/produkty/stac-wzor/TB41_1.jpg" alt="TE30"><h3 id="te30-title">TE30</h3><p id="te30-desc">Portable Three-Phase Working Standard and Power Quality Analyzer.</p><a href="https://www.calmet.com.pl/images/pdf/TE30-Electricity-Meter-Tester-and-Power-Quality-Analyzer-Presentation-EN.pdf" target="_blank" id="te30-link">Presentation</a></div><div class="product-card"><img src="https://www.calmet.com.pl/images/fotos/C300B-Three-Phase-Power-Calibrator-And-Tester.jpg" alt="C300B"><h3 id="c300b-title">C300B</h3><p id="c300b-desc">Three-phase power and energy calibrator/tester with accuracy class 0.02/0.05.</p><a href="https://www.calmet.com.pl/images/pdf/C300-Power-Calibrator-Presentation-EN.pdf" target="_blank" id="c300b-link">Presentation</a></div><div class="product-card"><img src="https://www.calmet.com.pl/images/produkty/test-licz/TS33-Three-Phase-Test-System-with-Reference-Standard-and-Current-Source_2.jpg" alt="TS33"><h3 id="ts33-title">TS33</h3><p id="ts33-desc">Three-phase automatic test system with reference standard and integrated voltage/current source.</p><a href="https://www.calmet.com.pl/images/pdf/TS33-Three-Phase-Test-System-with-Reference-Standard-and-Integrated-Current-and-Voltage-Source-Presentation-EN.pdf" target="_blank" id="ts33-link">Presentation</a></div><div class="product-card"><img src="https://www.calmet.com.pl/images/produkty/test-licz/TS23-Three-Phase-Test-System-with-Reference-Standard-and-Current-Source.jpg" alt="TS23"><h3 id="ts23-title">TS23</h3><p id="ts23-desc">Three-phase test system with reference standard and integrated current source up to 120A.</p><a href="https://www.calmet.com.pl/images/pdf/TS23-Three-Phase-Test-System-with-Reference-Standard-and-Integrated-Current-Source-Presentation-EN.pdf" target="_blank" id="ts23-link">Presentation</a></div><div class="product-card"><img src="https://www.calmet.com.pl/images/produkty/stac-wzor/TB41_1.jpg" alt="TB41"><h3 id="tb41-title">TB41</h3><p id="tb41-desc">Four-phase AC voltage and current source for testing electricity meters and relays.</p><a href="https://www.calmet.com.pl/images/pdf/TB41-Four-Phase-AC-Voltage-and-Current-Source-Presentation-EN.pdf" target="_blank" id="tb41-link">Presentation</a></div><div class="product-card"><img src="https://www.calmet.com.pl/images/produkty/test-licz/TS41-Test-System-with-Reference-Standard-and-Current-Source.jpg" alt="TS41"><h3 id="ts41-title">TS41</h3><p id="ts41-desc">Four-phase test system with reference standard and integrated current/voltage source.</p><a href="https://www.calmet.com.pl/images/pdf/TS41-Test-System-with-Reference-Standard-and-Integrated-Current-and-Voltage-Source-Presentation-EN.pdf" target="_blank" id="ts41-link">Presentation</a></div></div>
+    </section>
+    <section id="certification">
+        <h2 id="certification-title">Certification & Standards</h2>
+        <div class="certification-container"><img src="https://i.imgur.com/K3v0m8B.png" alt="ISO 9001 Certified"><p id="certification-text">We are proud that our quality management system is certified according to the ISO 9001 standard. This is a guarantee of reliability, stability, and the highest quality of our products and services.</p></div>
+    </section>
+    <section id="news">
+        <h2 id="news-title">News & Events</h2>
+        <div class="news-grid"><div class="news-card"><img src="https://i.imgur.com/1B9qR4r.jpg" alt="Exhibition"><div class="news-content"><h3 id="news1-title">Participation in Energetab 2024</h3><p id="news1-desc">We invite you to visit our booth at the leading energy exhibition in Europe. We will present our latest developments.</p></div></div><div class="news-card"><img src="https://i.imgur.com/i9JzS4a.jpg" alt="New Product"><div class="news-content"><h3 id="news2-title">New Power Quality Analyzer TE35</h3><p id="news2-desc">We have released a new flagship analyzer with advanced features and an improved interface.</p></div></div><div class="news-card"><img src="https://i.imgur.com/6xXw7tQ.jpg" alt="Webinar"><div class="news-content"><h3 id="news3-title">Online Calibration Webinar</h3><p id="news3-desc">We held a successful webinar for our partners on modern methods of meter calibration.</p></div></div></div>
+    </section>
+    <section id="contact">
+        <h2 id="contact-title">Contact Us</h2>
+        <div class="contact-container"><div class="contact-info"><h3 id="contact-info-title">Get in Touch</h3><p id="contact-text">Calmet sp. z o.o.<br>ul. Kukulcza 18<br>65-472 Zielona Góra<br>Poland</p><div class="contact-details"><p><strong id="contact-tel-label">Tel:</strong> <a href="tel:+48683240456">+48 68 324 04 56</a></p><p><strong id="contact-email-label">Email:</strong> <a href="mailto:mail@calmet.com.pl">mail@calmet.com.pl</a></p></div></div><form id="contact-form" novalidate><h3 id="form-title">Send Us a Message</h3><input type="text" id="form-name" placeholder="Your Name" required><input type="email" id="form-email" placeholder="Your Email" required><textarea id="form-message" placeholder="Your Message" rows="5" required></textarea><button type="submit" id="form-submit">Send</button></form></div>
+    </section>
     <footer>
-        <p id="footer-text">&copy; 2025 Calmet. Все права защищены.</p>
+        <div class="footer-container"><p id="footer-text">&copy; 2025 Calmet. All rights reserved.</p><div class="footer-nav"><a href="#about" id="footer-nav-about">About Us</a><a href="#products" id="footer-nav-products">Products</a><a href="#contact" id="footer-nav-contact">Contact</a></div></div>
     </footer>
-    
-    <!-- КНОПКА НАВЕРХ -->
     <a href="#home" class="scroll-to-top">↑</a>
 
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.3.4/tsparticles.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
